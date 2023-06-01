@@ -1,16 +1,16 @@
 # flutter_camera_rt
 
-A new Flutter project.
+A sample project whose objective is to access realtime camera frames, convert them and make them accessible to the flutter engine.
+It accesses camera frames inside the flutter code with startCameraStream and then sends them to the java code to convert them to jpg.
 
-## Getting Started
+## Why ?
 
-This project is a starting point for a Flutter application.
+I tried to do it simply in dart, but the performance was very very bad. So I search for a way to improve it, and the way I found was to convert the frames outside the flutter engine and convert them there and then send them back in the good format.
+It could be applied to many more problems in which the Flutter engine isnt strong or fast enough.
 
-A few resources to get you started if this is your first Flutter project:
+### Improvements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1 State management
+2 Camera controls
+3 Interface
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

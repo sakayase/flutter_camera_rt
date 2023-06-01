@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_rt/camera_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,11 +30,43 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Camera RT'),
+    return const SafeArea(
+      child: Scaffold(
+        body: CameraScreen(),
       ),
-      body: Text('Hey'),
     );
   }
+
+  List<TextSpan> buildReversedAsciiArt(String asciiArt) {
+    List<TextSpan> list = [];
+    for (var i = asciiArt.length - 1; i >= 0; i--) {
+      list.add(TextSpan(text: asciiArt[i]));
+    }
+    return list;
+  }
 }
+
+Size calcTextSize(String text, TextStyle style) {
+  final TextPainter textPainter = TextPainter(
+    text: TextSpan(text: text, style: style),
+    textDirection: TextDirection.ltr,
+    textScaleFactor: 1,
+    textWidthBasis: TextWidthBasis.parent,
+  )..layout();
+  return textPainter.size;
+}
+
+final double textWidth = calcTextSize(
+  ' ',
+  const TextStyle(
+    fontSize: 5,
+    fontFamily: 'Roboto',
+  ),
+).width;
+final double textHeight = calcTextSize(
+  ' ',
+  const TextStyle(
+    fontSize: 5,
+    fontFamily: 'Roboto',
+  ),
+).height;
